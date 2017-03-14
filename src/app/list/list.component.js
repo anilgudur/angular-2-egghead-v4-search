@@ -26,7 +26,7 @@ var ListComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'list-component',
-            template: "\n        <ul>\n            <li *ngFor=\"let item of items\">\n                {{item.id}}: {{item.name}} lives in {{item.country}}\n            </li>\n        </ul>\n    ",
+            template: "\n        <ul>\n            <li *ngFor=\"let item of items\">\n                {{item.id}}: {{item.name}} lives in {{item.country}}\n            </li>\n        </ul>\n        <wikipedia></wikipedia>\n    ",
             providers: []
         }), 
         __metadata('design:paramtypes', [list_service_module_1.ListService, list_service_module_1.ListAnotherService, logs_module_1.LogDebugger])

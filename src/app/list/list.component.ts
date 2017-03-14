@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 
 import { ListService, ListAnotherService } from './list-service.module';
 import { LogDebugger, ConsoleService } from '../core/logs/logs.module';
+import { WikipediaComponent } from '../wikipedia/wikipedia.module';
 
 @Component({
     moduleId: module.id,
@@ -12,6 +13,7 @@ import { LogDebugger, ConsoleService } from '../core/logs/logs.module';
                 {{item.id}}: {{item.name}} lives in {{item.country}}
             </li>
         </ul>
+        <wikipedia></wikipedia>
     `,
     providers: [
         // {

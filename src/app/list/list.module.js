@@ -11,12 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var list_component_1 = require('./list.component');
+var wikipedia_module_1 = require('../wikipedia/wikipedia.module');
 var ListModule = (function () {
     function ListModule() {
     }
     ListModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule],
+            imports: [
+                common_1.CommonModule,
+                wikipedia_module_1.WikipediaModule.forRoot()
+            ],
             exports: [list_component_1.ListComponent, common_1.CommonModule],
             declarations: [list_component_1.ListComponent],
             providers: []
