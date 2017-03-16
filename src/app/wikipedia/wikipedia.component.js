@@ -10,8 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var wikipedia_search_service_1 = require('./wikipedia-search.service');
-//application wide shared Rx operators
-//import 'rxjs/add/operator/map';
 var WikipediaComponent = (function () {
     function WikipediaComponent(wikipediaSearchService) {
         this.wikipediaSearchService = wikipediaSearchService;
@@ -26,7 +24,6 @@ var WikipediaComponent = (function () {
             moduleId: module.id,
             selector: 'wikipedia',
             templateUrl: 'wikipedia.component.html',
-            styleUrls: ['app.component.css']
         }), 
         __metadata('design:paramtypes', [wikipedia_search_service_1.WikipediaSearchService])
     ], WikipediaComponent);

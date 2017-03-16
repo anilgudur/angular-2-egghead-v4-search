@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { URLSearchParams, Jsonp } from '@angular/http';
 
+//application wide shared Rx operators
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -15,7 +16,7 @@ export class WikipediaSearchService {
         search.set('search', term);
         search.set('format', 'json');
 
-        return this.jsonp.get('http://en.wikipedia.org/w/api.php?callback-JSON_CALLBACK', {search})
+        return this.jsonp.get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', {search})
                     .map(response => response.json()[1]);
     }
 

@@ -7,7 +7,7 @@ import { WikipediaModule } from '../wikipedia/wikipedia.module';
 @NgModule({
     imports: [
         CommonModule,
-        WikipediaModule.forRoot()
+        WikipediaModule
     ],
     exports: [ListComponent, CommonModule],
     declarations: [ListComponent],

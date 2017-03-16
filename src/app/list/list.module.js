@@ -19,7 +19,7 @@ var ListModule = (function () {
         core_1.NgModule({
             imports: [
                 common_1.CommonModule,
-                wikipedia_module_1.WikipediaModule.forRoot()
+                wikipedia_module_1.WikipediaModule
             ],
             exports: [list_component_1.ListComponent, common_1.CommonModule],
             declarations: [list_component_1.ListComponent],

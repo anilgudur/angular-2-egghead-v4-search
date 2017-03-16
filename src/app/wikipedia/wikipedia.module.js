@@ -11,37 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var wikipedia_component_1 = require('./wikipedia.component');
-exports.WikipediaComponent = wikipedia_component_1.WikipediaComponent;
+var wikipedia_search_service_1 = require('./wikipedia-search.service');
+//application wide shared Rx operators
+require('rxjs/add/operator/map');
 var WikipediaModule = (function () {
     function WikipediaModule() {
     }
-    WikipediaModule.forRoot = function () {
-        return {
-            ngModule: WikipediaModule,
-            // providers: [
-            //     {provide: ListService, useClass: ListService}, 
-            //     {provide: ListAnotherService, useClass: ListAnotherService}, 
-            // ],
-            declarations: [wikipedia_component_1.WikipediaComponent],
+    WikipediaModule = __decorate([
+        core_1.NgModule({
             imports: [common_1.CommonModule],
             exports: [wikipedia_component_1.WikipediaComponent, common_1.CommonModule],
-        };
-    };
-    WikipediaModule = __decorate([
-        core_1.NgModule({}), 
+            declarations: [wikipedia_component_1.WikipediaComponent],
+            providers: [wikipedia_search_service_1.WikipediaSearchService],
+        }), 
         __metadata('design:paramtypes', [])
     ], WikipediaModule);
     return WikipediaModule;
 }());
 exports.WikipediaModule = WikipediaModule;
-// import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// import { WikipediaComponent }   from './wikipedia.component';
-// @NgModule({
-//     imports: [CommonModule],
-//     exports: [WikipediaComponent, CommonModule],
-//     declarations: [WikipediaComponent],
-//     providers: []
-// })
-// export class WikipediaModule { }
 //# sourceMappingURL=wikipedia.module.js.map

@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+//application wide shared Rx operators
 require('rxjs/add/operator/map');
 var WikipediaSearchService = (function () {
     function WikipediaSearchService(jsonp) {
@@ -20,7 +21,7 @@ var WikipediaSearchService = (function () {
         search.set('action', 'opensearch');
         search.set('search', term);
         search.set('format', 'json');
-        return this.jsonp.get('http://en.wikipedia.org/w/api.php?callback-JSON_CALLBACK', { search: search })
+        return this.jsonp.get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', { search: search })
             .map(function (response) { return response.json()[1]; });
     };
     WikipediaSearchService = __decorate([

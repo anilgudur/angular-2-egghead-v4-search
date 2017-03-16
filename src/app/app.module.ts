@@ -1,5 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
 import { CONFIG_PROVIDERS, IS_ENABLED_LOG_DEBUGGER } from './core/config/config.providers';
@@ -10,6 +11,8 @@ import { LogsModule } from './core/logs/logs.module';
 @NgModule({
   imports: [ 
       BrowserModule, 
+      HttpModule, 
+      JsonpModule, 
       ListModule, 
       ListServiceModule.forRoot(),
       LogsModule.forRoot()
