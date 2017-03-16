@@ -10,10 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var wikipedia_search_service_1 = require('./wikipedia-search.service');
+//application wide shared Rx operators
+var Subject_1 = require('rxjs/Subject');
+require('rxjs/add/operator/map');
 var WikipediaComponent = (function () {
     function WikipediaComponent(wikipediaSearchService) {
         this.wikipediaSearchService = wikipediaSearchService;
+        this.term$ = new Subject_1.Subject();
     }
+    WikipediaComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.term$.subscribe(function (term) { return _this.search(term); });
+    };
     WikipediaComponent.prototype.search = function (term) {
         var _this = this;
         this.wikipediaSearchService.search(term)

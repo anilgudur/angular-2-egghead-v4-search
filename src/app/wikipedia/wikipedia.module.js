@@ -12,8 +12,6 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var wikipedia_component_1 = require('./wikipedia.component');
 var wikipedia_search_service_1 = require('./wikipedia-search.service');
-//application wide shared Rx operators
-require('rxjs/add/operator/map');
 var WikipediaModule = (function () {
     function WikipediaModule() {
     }
