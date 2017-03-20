@@ -23,11 +23,15 @@ export class WikipediaComponent {
         this.term$
             .debounceTime(400)
             .distinctUntilChanged()
-            .subscribe(term => this.search(term));
+            //.subscribe(term => this.search(term));
+            .map(term => this.wikipediaSearchService.search(term))
+            .subscribe(obsResut => {
+                obsResut.subscribe(results => this.items = results);
+            }) // Call to component method which call a service is having 2 subscribe methods which is loosly connect via a method call, since observables are all about composability, so improve our code by providing map and observable of observable of array of strings
     }
 
-    search(term: string) {
-        this.wikipediaSearchService.search(term)
-            .subscribe(results => this.items = results);
-    }
+    // search(term: string) {
+    //     this.wikipediaSearchService.search(term)
+    //                                .subscribe(results => this.items = results);
+    // }
 }

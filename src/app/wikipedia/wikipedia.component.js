@@ -25,12 +25,10 @@ var WikipediaComponent = (function () {
         this.term$
             .debounceTime(400)
             .distinctUntilChanged()
-            .subscribe(function (term) { return _this.search(term); });
-    };
-    WikipediaComponent.prototype.search = function (term) {
-        var _this = this;
-        this.wikipediaSearchService.search(term)
-            .subscribe(function (results) { return _this.items = results; });
+            .map(function (term) { return _this.wikipediaSearchService.search(term); })
+            .subscribe(function (obsResut) {
+            obsResut.subscribe(function (results) { return _this.items = results; });
+        }); // Call to component method which call a service is having 2 subscribe methods which is loosly connect via a method call, since observables are all about composability, so improve our code by providing map and observable of observable of array of strings
     };
     WikipediaComponent = __decorate([
         // preventing-unnecessary-requests - Need an operator 'distinctUntilChanged' for a subsequent duplicate notification
