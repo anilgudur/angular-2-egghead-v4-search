@@ -11,9 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var wikipedia_search_service_1 = require('./wikipedia-search.service');
 //application wide shared Rx operators
-var Subject_1 = require('rxjs/Subject');
+var Subject_1 = require('rxjs/Subject'); // consuming-events-as-observables - Proxy user input through Observable Subject
 require('rxjs/add/operator/map');
-require('rxjs/add/operator/debounceTime');
+require('rxjs/add/operator/debounceTime'); // debouncing-the-user-input - Catch last notification by applying debounceTime operator with a milisecond delay
+require('rxjs/add/operator/distinctUntilChanged'); // preventing-unnecessary-requests - Need an operator 'distinctUntilChanged' for a subsequent duplicate notification
 var WikipediaComponent = (function () {
     function WikipediaComponent(wikipediaSearchService) {
         this.wikipediaSearchService = wikipediaSearchService;
@@ -23,6 +24,7 @@ var WikipediaComponent = (function () {
         var _this = this;
         this.term$
             .debounceTime(400)
+            .distinctUntilChanged()
             .subscribe(function (term) { return _this.search(term); });
     };
     WikipediaComponent.prototype.search = function (term) {
@@ -31,6 +33,7 @@ var WikipediaComponent = (function () {
             .subscribe(function (results) { return _this.items = results; });
     };
     WikipediaComponent = __decorate([
+        // preventing-unnecessary-requests - Need an operator 'distinctUntilChanged' for a subsequent duplicate notification
         core_1.Component({
             moduleId: module.id,
             selector: 'wikipedia',

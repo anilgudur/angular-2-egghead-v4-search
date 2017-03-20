@@ -2,6 +2,8 @@
 
 # Tags
 
-v4-search-step-01 "Proxy user input through Observable Subject - v4-01-egghead-angular-2-building-an-instant-search-with-angular-2-consuming-events-as-observables"
+v4-search-step-01 "consuming-events-as-observables - Proxy user input through Observable Subject - v4-01-egghead-angular-2-building-an-instant-search-with-angular-2-consuming-events-as-observables"
 
-v4-search-step-02 "Catch last notification by applying debounceTime operator with a milisecond delay - v4-02-egghead-angular-2-building-an-instant-search-with-angular2-debouncing-the-user-input"
+v4-search-step-02 "debouncing-the-user-input - Catch last notification by applying debounceTime operator with a milisecond delay - v4-02-egghead-angular-2-building-an-instant-search-with-angular2-debouncing-the-user-input"
+
+v4-search-step-03 "preventing-unnecessary-requests - preventing-unnecessary-requestsNeed an operator 'distinctUntilChanged' for a subsequent duplicate notification - v4-03-egghead-angular-2-building-an-instant-search-with-angular-2-preventing-unnecessary-requests"
