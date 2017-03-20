@@ -15,6 +15,7 @@ var Subject_1 = require('rxjs/Subject'); // consuming-events-as-observables - Pr
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/debounceTime'); // debouncing-the-user-input - Catch last notification by applying debounceTime operator with a milisecond delay
 require('rxjs/add/operator/distinctUntilChanged'); // preventing-unnecessary-requests - Need an operator 'distinctUntilChanged' for a subsequent duplicate notification
+require('rxjs/add/operator/mergeMap'); // flatMap is alias of mergeMap
 var WikipediaComponent = (function () {
     function WikipediaComponent(wikipediaSearchService) {
         this.wikipediaSearchService = wikipediaSearchService;
@@ -25,13 +26,11 @@ var WikipediaComponent = (function () {
         this.term$
             .debounceTime(400)
             .distinctUntilChanged()
-            .map(function (term) { return _this.wikipediaSearchService.search(term); })
-            .subscribe(function (obsResut) {
-            obsResut.subscribe(function (results) { return _this.items = results; });
-        }); // Call to component method which call a service is having 2 subscribe methods which is loosly connect via a method call, since observables are all about composability, so improve our code by providing map and observable of observable of array of strings
+            .flatMap(function (term) { return _this.wikipediaSearchService.search(term); }) // when a map has a observable into a observable of observable then flatMap automatically subscribe to this inner observable and flattens them into just a one observable of same type
+            .subscribe(function (results) { return _this.items = results; });
     };
     WikipediaComponent = __decorate([
-        // preventing-unnecessary-requests - Need an operator 'distinctUntilChanged' for a subsequent duplicate notification
+        // flatMap is alias of mergeMap
         core_1.Component({
             moduleId: module.id,
             selector: 'wikipedia',
