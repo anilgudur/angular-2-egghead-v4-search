@@ -24,10 +24,7 @@ var WikipediaComponent = (function () {
     }
     WikipediaComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.term$
-            .debounceTime(400)
-            .distinctUntilChanged()
-            .switchMap(function (term) { return _this.wikipediaSearchService.search(term); }) // when a map has a observable into a observable of observable then flatMap automatically subscribe to this inner observable and flattens them into just a one observable of same type
+        this.wikipediaSearchService.search(this.term$)
             .subscribe(function (results) { return _this.items = results; });
     };
     WikipediaComponent = __decorate([

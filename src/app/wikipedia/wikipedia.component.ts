@@ -22,16 +22,8 @@ export class WikipediaComponent {
     constructor(private wikipediaSearchService: WikipediaSearchService){}
 
     ngOnInit(): void {
-        this.term$
-            .debounceTime(400)
-            .distinctUntilChanged()
-            //.subscribe(term => this.search(term));
-            // .map(term => this.wikipediaSearchService.search(term))
-            // .subscribe(obsResut => {
-            //     obsResut.subscribe(results => this.items = results);
-            // }); // Call to component method which call a service is having 2 subscribe methods which is loosly connect via a method call, since observables are all about composability, so improve our code by providing map and observable of observable of array of strings
-            .switchMap(term => this.wikipediaSearchService.search(term)) // when a map has a observable into a observable of observable then flatMap automatically subscribe to this inner observable and flattens them into just a one observable of same type
-            .subscribe(results => this.items = results);
+        this.wikipediaSearchService.search(this.term$)
+                                   .subscribe(results => this.items = results);
     }
 
     // search(term: string) {

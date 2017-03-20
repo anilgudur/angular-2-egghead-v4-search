@@ -16,7 +16,14 @@ var WikipediaSearchService = (function () {
     function WikipediaSearchService(jsonp) {
         this.jsonp = jsonp;
     }
-    WikipediaSearchService.prototype.search = function (term) {
+    WikipediaSearchService.prototype.search = function (terms, debounceMs) {
+        var _this = this;
+        if (debounceMs === void 0) { debounceMs = 400; }
+        return terms.debounceTime(debounceMs)
+            .distinctUntilChanged()
+            .switchMap(function (term) { return _this.rawSearch(term); }); // when a map has a observable into a observable of observable then flatMap automatically subscribe to this inner observable and flattens them into just a one observable of same type
+    };
+    WikipediaSearchService.prototype.rawSearch = function (term) {
         var search = new http_1.URLSearchParams();
         search.set('action', 'opensearch');
         search.set('search', term);
