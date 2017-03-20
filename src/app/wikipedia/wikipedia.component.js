@@ -13,6 +13,7 @@ var wikipedia_search_service_1 = require('./wikipedia-search.service');
 //application wide shared Rx operators
 var Subject_1 = require('rxjs/Subject');
 require('rxjs/add/operator/map');
+require('rxjs/add/operator/debounceTime');
 var WikipediaComponent = (function () {
     function WikipediaComponent(wikipediaSearchService) {
         this.wikipediaSearchService = wikipediaSearchService;
@@ -20,7 +21,9 @@ var WikipediaComponent = (function () {
     }
     WikipediaComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.term$.subscribe(function (term) { return _this.search(term); });
+        this.term$
+            .debounceTime(400)
+            .subscribe(function (term) { return _this.search(term); });
     };
     WikipediaComponent.prototype.search = function (term) {
         var _this = this;

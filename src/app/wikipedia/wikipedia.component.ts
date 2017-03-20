@@ -5,6 +5,7 @@ import { WikipediaSearchService } from './wikipedia-search.service';
 //application wide shared Rx operators
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
     moduleId: module.id,
@@ -18,7 +19,9 @@ export class WikipediaComponent {
     constructor(private wikipediaSearchService: WikipediaSearchService){}
 
     ngOnInit(): void {
-        this.term$.subscribe(term => this.search(term));
+        this.term$
+            .debounceTime(400)
+            .subscribe(term => this.search(term));
     }
 
     search(term: string) {
