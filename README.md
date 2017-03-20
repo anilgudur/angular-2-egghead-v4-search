@@ -11,3 +11,5 @@ v4-search-step-03 "preventing-unnecessary-requests - preventing-unnecessary-requ
 v4-search-step-04 "when a map has a observable into a observable of observable then flatMap automatically subscribe to this inner observable and flattens them into just a one observable of same type - v4-04-egghead-angular-2-building-an-instant-search-with-angular-2-combining-observables-with-flatmap"
 
 v4-search-step-05 "dealing-with-out-of-order-responses - v4-05-egghead-angular-2-building-an-instant-search-with-angular-2-dealing-with-out-of-order-responses"
+
+v4-search-step-06 "v4-06-egghead-angular-2-building-an-instant-search-with-angular-2-building-fully-reactive-apis"
